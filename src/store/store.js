@@ -41,7 +41,7 @@ export function calculate(){
     const totalPerPerson = getGrandTotal() / people;
 
     // Actualiza el valor restante en los parámetros del almacenamiento
-    store.params.remaning = getGrandTotal;
+    store.params.remaining = getGrandTotal;
 
     // Genera la lista de personas y sus respectivos detalles
     for (let i = 0; i < people; i++) {
@@ -52,4 +52,25 @@ export function calculate(){
             paid: false,                   // Indica si la persona ha pagado
         });
     }
+
+    calculateRemaining();
 }
+
+/**
+ * Función para calcular el monto restante por pagar entre los usuarios.
+ * Calcula la cantidad total que falta por pagar entre las personas que aún no han pagado.
+ */
+function calculateRemaining(){
+    // Filtra las personas que aún no han pagado
+    const missingToPay = store.people.filter(item => !item.paid);
+    
+    // Calcula el monto total restante por pagar
+    const remaining = missingToPay.reduce(
+        (acc, item) => (acc += item.totalPerPerson), // Suma el monto por persona al acumulador
+        0 // Valor inicial del acumulador
+    );
+
+    // Actualiza el valor de 'remaining' en el almacenamiento global
+    store.params.remaining = remaining;  
+}
+
