@@ -74,3 +74,20 @@ function calculateRemaining(){
     store.params.remaining = remaining;  
 }
 
+/**
+ * Función para marcar un usuario como pagado o no pagado y actualizar el cálculo del monto restante.
+ * @param {string} id - Identificador único del usuario.
+ * @param {boolean} paid - Indica si el usuario ha pagado o no.
+ */
+export function pay(id, paid){
+    // Busca al usuario por su identificador único
+    const person = store.people.find(item => item.id === id);
+
+    // Si se encuentra al usuario, se actualiza su estado de pago y se recalcula el monto restante
+    if (person) {
+        person.paid = paid;
+        calculateRemaining(); // Se llama a la función para recalcular el monto restante
+    }
+}
+
+
