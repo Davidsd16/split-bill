@@ -23,3 +23,33 @@ export const store = reactive({
 export function getGrandTotal(){
     return store.params.total * (store.params.tip / 100 + 1);
 }
+
+/**
+ * Esta función calcula el total por persona y distribuye la factura entre el número de personas especificado.
+ * También actualiza el almacenamiento reactivable con la lista de personas y el total restante.
+ */
+export function calculate(){
+    // Vacía la lista de personas en el almacenamiento
+    store.people = [];
+
+    // Obtiene los valores de los parámetros de la factura
+    const total = store.params.total;
+    const tip = store.params.tip;
+    const people = store.params.people;
+
+    // Calcula el total por persona
+    const totalPerPerson = getGrandTotal() / people;
+
+    // Actualiza el valor restante en los parámetros del almacenamiento
+    store.params.remaning = getGrandTotal;
+
+    // Genera la lista de personas y sus respectivos detalles
+    for (let i = 0; i < people; i++) {
+        store.people.push({
+            id: crypto.randomUUID(),      // Genera un ID único para cada persona
+            numberOfPerson: i + 1,         // Número de la persona
+            totalPerPerson,                // Total a pagar por la persona
+            paid: false,                   // Indica si la persona ha pagado
+        });
+    }
+}
