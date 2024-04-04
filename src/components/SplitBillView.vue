@@ -1,5 +1,17 @@
-<script setup></script>
+<script setup>
+import InputForm from './InputForm.vue'
+import PeopleView from './PeopleView.vue'
+</script>
 
-<template>Hola Mundo!</template>
+<template>
+    <div class="container">
+        <InputForm/>
+        <PeopleView/>
+    </div>
+</template>
 
-<style scoped></style>
+<style scoped>
+    .containe{
+        display: flex;
+    }
+</style>

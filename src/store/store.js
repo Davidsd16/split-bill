@@ -11,7 +11,7 @@ export const store = reactive({
         total: 0,       // Total de la factura
         tip: 0,         // Propina
         people: 0,      // Número de personas
-        remaning: 0,    // Restante
+        remaining: 0,    // Restante
     },
     people: [],         // Lista de personas
 });
