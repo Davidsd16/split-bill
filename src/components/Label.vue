@@ -23,5 +23,11 @@
 </template>
 
 <style scoped>
-    /* Estilos específicos del componente */
+    .title {
+        font-weight: bolder;
+    }
+
+    .value {
+        color: yellowgreen;
+    }
 </style>

@@ -12,13 +12,15 @@
         <!-- Encabezado de la vista de personas -->
         <div class="header">
             <div>
-                <!-- Mostrar el resultado del total obtenido a través de la función getGrandTotal() -->
-                <div>{{ getGrandTotal() }}</div>
+                <Label title="Total + Tip" :value="getGrandTotal()" />
+            </div>
+            <div>
+                <div>{{ store.params.remaining }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-    /* Estilos específicos del componente */
+  /* Estilos específicos del componente */
 </style>
