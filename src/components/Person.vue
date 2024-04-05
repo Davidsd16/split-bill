@@ -9,12 +9,12 @@
     const props = defineProps(['id', 'numberOfPerson', 'totalPerPerson', 'paid' ]);
 
     // Crear una referencia reactiva para el estado de pago de la persona
-    let paid = ref(false);
+    let paid = ref(props.paid); // Inicializar con el valor de props.paid
 
     // Función para manejar el cambio en el estado de pago
-    function handleChange(e){
-        // Actualizar el estado de pago con el valor del evento de cambio
-        paid.value = e.target.value;
+    function handleChange() {
+        // Invertir el valor de 'paid' cuando se produce el cambio
+        paid.value = !paid.value;
 
         // Llamar a la función de la tienda para actualizar el estado de pago en la lista de personas
         pay(props.id, paid.value);
@@ -22,7 +22,7 @@
 </script>
 
 <template>
-    <div :class="['person', props.paid ? 'person-paid' : 'person-no-paid']">
+    <div :class="['person', paid.value ? 'person-paid' : 'person-no-paid']">
         <!-- Mostrar el número de persona -->
         <div class="person-number">
             Person {{ props.numberOfPerson }}
@@ -38,7 +38,7 @@
         </div>
         <!-- Input para marcar si la persona ha pagado o no -->
         <div class="pay">
-            <input type="checkbox" name="" id="" @change="handleChange"> Paid
+            <input type="checkbox" name="" id="" :checked="paid.value" @change="handleChange"> Paid
         </div>
     </div>
 </template>
@@ -72,7 +72,7 @@
     .person-topay {
         text-align: center;
         font-size: 30px;
-        font-weight: bold;
+        font-weight: bolder;
         color: greenyellow;
     }
 

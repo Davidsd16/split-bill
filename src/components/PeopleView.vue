@@ -41,5 +41,37 @@
 </template>
 
 <style scoped>
-  /* Estilos específicos del componente */
+    .no-items {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+    }
+    .people-view {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .people-container {
+        width: 800px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 10px;
+    }
+
+    .header {
+        color: white;
+        font-weight: bolder;
+        padding: 20px 0;
+        font-size: 28px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-direction: column;
+    }
 </style>
