@@ -9,7 +9,7 @@
     const props = defineProps(['id', 'numberOfPerson', 'totalPerPerson', 'paid' ]);
 
     // Crear una referencia reactiva para el estado de pago de la persona
-    const paid = ref(false);
+    let paid = ref(false);
 
     // Función para manejar el cambio en el estado de pago
     function handleChange(e){
@@ -22,7 +22,7 @@
 </script>
 
 <template>
-    <div>
+    <div :class="['person', props.paid ? 'person-paid' : 'person-no-paid']">
         <!-- Mostrar el número de persona -->
         <div class="person-number">
             Person {{ props.numberOfPerson }}
@@ -44,5 +44,40 @@
 </template>
 
 <style scoped>
-    /* Estilos específicos del componente */
+    .person {
+        height: 200px;
+        border-radius: 5px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+    .person-paid {
+        border: solid 3px #e80808;
+    }
+
+    .person-no-paid {
+        border: solid 3px #0df023;
+    }
+
+    .person-number {
+        background-color: black;
+        padding: 10px;
+        color: white;
+        text-align: center;
+    }
+
+    .person-topay {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: greenyellow;
+    }
+
+    .paid {
+        background-color: rgb(52, 63, 104);
+        padding: 10px;
+    }
 </style>
