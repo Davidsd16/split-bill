@@ -18,7 +18,6 @@
         // Llamada a la función calculate del store
         calculate();
     }
-
 </script>
 
 <template>
@@ -46,5 +45,33 @@
 </template>
 
 <style scoped>
-    /* Estilos específicos del componente */
+    /* Estilos específicos del formulario */
+    form {
+        width: 400px;
+        background-color: rgb(23, 129, 78);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 18px;
+        padding: 20px;
+    }
+
+    .form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    form label {
+        display: block;
+    }
+
+    form input {
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
 </style>
