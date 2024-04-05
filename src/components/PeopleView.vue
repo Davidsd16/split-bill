@@ -4,6 +4,9 @@
 
     // Importar el componente Label.vue para mostrar etiquetas personalizadas
     import Label from "./Label.vue";
+
+    import Person from "./Person.vue";
+
 </script>
 
 <template>
@@ -26,10 +29,13 @@
 
         <!-- Contenedor de personas -->
         <div class="people-container">
-            <!-- Iterar sobre la lista de personas y mostrar el total por persona -->
-            <div v-for="person in store.people" :key="person.id">
-                {{ person.totalPerPerson }}
-            </div>
+                <Person
+                    v-for="person in store.people" :key="person.id"
+                    id="person.id" 
+                    :number-of-person="person.numberOfPerson" 
+                    :total-per-person="person.totalPerPerson"
+                    :paid="person.paid"
+                />
         </div>
     </div>
 </template>
